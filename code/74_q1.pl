@@ -70,6 +70,10 @@ clue(8, S) :-
     Dept == research,
     Lang \== javascript.
 
+% CLUE 9: The friend who prefers the AI project works in the testing department.
+clue(9, S) :-
+    memberchk(p(_, Dept, _, 'AI'), S),
+    Dept == testing.
 
 % main: print the first solution that satisfies clues 1 to 8, one line per friend. once/1 stops the search at the first solution; forall/2 checks every clue.
 main :-
@@ -90,4 +94,4 @@ count_solutions(Active, N) :-
             ( solution(S),
               forall(member(C, Active), clue(C, S)) ),
             Solutions),
-    length(Solutions, N).                             
+    length(Solutions, N).      

@@ -76,7 +76,8 @@ expect_count([6], 7776).
 expect_count([7], 5184).
 expect_count([8], 2592).
 expect_count([1,2,3,4,5,6,7,8], 3).
-expect_count([8,7,6,5,4,3,2,1], 3).   % order of Active does not matter
+expect_count([8,7,6,5,4,3,2,1], 3).
+expect_count([1,2,3,4,5,6,7,8,9], 1).   % order of Active does not matter
 
 test(count(Active),
      ( count_solutions(Active, N), N =:= Expected )) :-
@@ -128,6 +129,9 @@ fails(7, [p('Alex',research,python,'AI'),p('Ben',development,java,web),p('Carla'
 holds(8, [p('Alex',research,python,data),p('Ben',development,java,web),p('Carla',design,'c++',embedded),p('Dana',testing,javascript,'AI')]).
 fails(8, [p('Alex',research,python,'AI'),p('Ben',development,java,web),p('Carla',design,'c++',data),p('Dana',testing,javascript,embedded)]).
 fails(8, [p('Alex',research,javascript,data),p('Ben',development,java,web),p('Carla',design,'c++',embedded),p('Dana',testing,python,'AI')]).
+holds(9, [p('Alex',design,java,embedded),p('Ben',development,javascript,web),p('Carla',testing,python,'AI'),p('Dana',research,'c++',data)]).
+fails(9, [p('Alex',design,java,'AI'),p('Ben',development,javascript,web),p('Carla',research,'c++',data),p('Dana',testing,python,embedded)]).
+fails(9, [p('Alex',testing,python,embedded),p('Ben',development,javascript,web),p('Carla',design,java,'AI'),p('Dana',research,'c++',data)]).
 
 test(holds(N), clue(N, S)) :-
     holds(N, S).
