@@ -28,3 +28,36 @@ expr(Nums, bin(Op, Left, Right), Value) :-
     expr(RightNums, Right, RightValue),
     apply_op(Op, LeftValue, RightValue, Value).  
 
+% prec(Op, Precedence): arithmetic operators have their specified precedence.
+prec('+', 1).
+prec('-', 1).
+prec('*', 2).
+prec('/', 2).
+
+% tree_string(Tree, String): String renders Tree with the required parentheses.
+% Base case: a number becomes its decimal string.
+% Recursive case: render both subtrees and parenthesize them according to precedence.
+tree_string(num(N), String) :-
+    number_string(N, String).
+tree_string(bin(Op, Left, Right), String) :-
+    prec(Op, ParentPrec),
+    tree_string(Left, LeftRaw),
+    tree_string(Right, RightRaw),
+    ( Left = bin(LeftOp, _, _),
+      prec(LeftOp, LeftPrec),
+      LeftPrec < ParentPrec
+    -> string_concat("(", LeftRaw, LeftStart),
+       string_concat(LeftStart, ")", LeftString)
+    ;  LeftString = LeftRaw
+    ),
+    ( Right = bin(RightOp, _, _),
+      prec(RightOp, RightPrec),
+      RightPrec =< ParentPrec
+    -> string_concat("(", RightRaw, RightStart),
+       string_concat(RightStart, ")", RightString)
+    ;  RightString = RightRaw
+    ),
+    atom_string(Op, OpString),
+    string_concat(LeftString, OpString, FirstPart),
+    string_concat(FirstPart, RightString, String).
+
