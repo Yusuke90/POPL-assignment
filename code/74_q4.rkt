@@ -8,3 +8,10 @@
     (if (null? remaining)
         acc
         (loop (cdr remaining) (+ acc 1)))))
+;; (my-map f lst) = () if lst is empty,
+;;   else (cons (f (car lst)) (my-map f (cdr lst)))
+(define (my-map f lst)
+  (if (null? lst)
+      '()
+      (cons (f (car lst))
+            (my-map f (cdr lst)))))        
