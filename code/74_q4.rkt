@@ -14,4 +14,17 @@
   (if (null? lst)
       '()
       (cons (f (car lst))
-            (my-map f (cdr lst)))))        
+            (my-map f (cdr lst))))) 
+;; (insert-if-short x lst n) = lst with every nested list processed first,
+;;   then x consed on the front if the ORIGINAL length of lst is < n
+(define (insert-if-short x lst n)
+  (let ((processed
+         ;; each element: a list (or ()) is processed recursively, an atom stays
+         (my-map (lambda (e)
+                   (if (or (pair? e) (null? e))
+                       (insert-if-short x e n)
+                       e))
+                 lst)))
+    (if (< (my-length lst) n)
+        (cons x processed)
+        processed)))                   
