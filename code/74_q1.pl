@@ -92,4 +92,16 @@ main :-
 print_people([]).
 print_people([p(Name, Dept, Lang, Project)|Rest]) :-
     format("~w = [~w, ~w, ~w]~n", [Name, Dept, Lang, Project]),
-    print_people(Rest).                         
+    print_people(Rest).
+
+
+% count_solutions(Active, N): N is the number of candidate solutions in which
+% every clue listed in Active holds; clues not in Active are ignored.
+% findall/3 collects each candidate that passes all active clues, and
+% length/2 counts them.
+count_solutions(Active, N) :-
+    findall(S,
+            ( solution(S),
+              forall(member(C, Active), clue(C, S)) ),
+            Solutions),
+    length(Solutions, N).                             
