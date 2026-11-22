@@ -1,5 +1,5 @@
 % P1: Department Assignment Puzzle, Reloaded
-% Only definitions here: no halt, no initialization, no printing on load.
+% Only definitions here: nothing runs or prints on load.
 
 :- use_module(library(lists)).
 :- use_module(library(apply)).
