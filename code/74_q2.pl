@@ -61,3 +61,15 @@ tree_string(bin(Op, Left, Right), String) :-
     string_concat(LeftString, OpString, FirstPart),
     string_concat(FirstPart, RightString, String).
 
+% equation(List, String): String joins two equal-valued expressions over consecutive parts of List.
+equation(List, String) :-
+    split_nonempty(List, LeftNums, RightNums),
+    expr(LeftNums, LeftTree, LeftValue),
+    expr(RightNums, RightTree, RightValue),
+    LeftValue =:= RightValue,
+    tree_string(LeftTree, LeftString),
+    tree_string(RightTree, RightString),
+    string_codes(Equals, [61]),
+    string_concat(LeftString, Equals, FirstPart),
+    string_concat(FirstPart, RightString, String).    
+
