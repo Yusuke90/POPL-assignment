@@ -63,5 +63,10 @@ clue(6, S) :-
     memberchk(p('Carla', Dept, _, Project), S),
     Project \== embedded,
     Dept \== development.
-    
-                  
+
+% Clue 7: Dana's favorite language is not Java, and she works in research
+% or testing. Find Dana by name, then check language and department.
+clue(7, S) :-
+    memberchk(p('Dana', Dept, Lang, _), S),
+    Lang \== java,
+    memberchk(Dept, [research, testing]).                  
