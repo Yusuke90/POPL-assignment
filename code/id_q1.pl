@@ -42,4 +42,11 @@ clue(2, S) :-
 % Find that friend by department, then check the language.
 clue(3, S) :-
     memberchk(p(_, testing, Lang, _), S),
-    Lang == python.    
+    Lang == python.
+
+% Clue 4: Ben prefers web projects and does not work in testing.
+% Find Ben by name, then check his project and department.
+clue(4, S) :-
+    memberchk(p('Ben', Dept, _, Project), S),
+    Project == web,
+    Dept \== testing.        
