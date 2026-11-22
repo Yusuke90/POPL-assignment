@@ -77,3 +77,8 @@ equation(List, String) :-
 generate_equation(List, String) :-
     once(equation(List, String)).
 
+% all_equations(List, Equations): Equations is the sorted, duplicate-free list of equations for List.
+all_equations(List, Equations) :-
+    findall(String, equation(List, String), Found),
+    sort(Found, Equations).
+
