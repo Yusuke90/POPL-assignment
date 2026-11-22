@@ -21,3 +21,13 @@ solution(S) :-
 make_people([], [], [], [], []).
 make_people([N|Ns], [D|Ds], [L|Ls], [P|Ps], [p(N, D, L, P)|Rest]) :-
     make_people(Ns, Ds, Ls, Ps, Rest).  
+
+% clue(N, S): clue number N holds in the fully filled-in solution S.
+
+% Clue 1: the friend who prefers the AI project does not work in research
+% and is not Dana. Find that friend by project, then check dept and name.
+clue(1, S) :-
+    memberchk(p(Name, Dept, _, 'AI'), S),
+    Dept \== research,
+    Name \== 'Dana'.
+    
