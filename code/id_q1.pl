@@ -76,4 +76,20 @@ clue(7, S) :-
 clue(8, S) :-
     memberchk(p(_, Dept, Lang, data), S),
     Dept == research,
-    Lang \== javascript.                     
+    Lang \== javascript.
+
+
+% main: print the first solution that satisfies clues 1 to 8, one line per friend.
+% once/1 stops the search at the first solution; forall/2 checks every clue.
+main :-
+    once(( solution(S),
+           forall(between(1, 8, N), clue(N, S)) )),
+    print_people(S).
+
+% print_people(People): print one line "Name = [Dept, Lang, Project]" per friend.
+% Base case: no friends left. Recursive case: print the head, then the rest.
+% ~w prints atoms without quotes, so 'c++' and 'AI' appear as c++ and AI.
+print_people([]).
+print_people([p(Name, Dept, Lang, Project)|Rest]) :-
+    format("~w = [~w, ~w, ~w]~n", [Name, Dept, Lang, Project]),
+    print_people(Rest).                         
