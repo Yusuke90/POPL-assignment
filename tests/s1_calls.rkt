@@ -3,7 +3,7 @@
 (define t2 '(1 () (2 () (3 () ()))))
 (define t3 '(a (b () ()) (c () ())))
 
-(display (inorder-acc t1 '())) (newline)
-(display (inorder-acc t2 '())) (newline)
-(display (inorder-acc t3 '())) (newline)
-(display (inorder-acc '() '())) (newline)
+(print-inorder t1)
+(print-inorder t2)
+(print-inorder t3)
+(print-inorder '())

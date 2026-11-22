@@ -9,3 +9,8 @@
       (inorder-acc (cadr tree)
                    (cons (car tree)
                          (inorder-acc (caddr tree) acc)))))
+;; (print-inorder tree) = display the inorder list of tree, then a newline
+(define (print-inorder tree)
+  (begin
+    (display (inorder-acc tree '()))
+    (newline)))                         
