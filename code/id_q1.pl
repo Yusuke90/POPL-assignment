@@ -49,4 +49,10 @@ clue(3, S) :-
 clue(4, S) :-
     memberchk(p('Ben', Dept, _, Project), S),
     Project == web,
-    Dept \== testing.        
+    Dept \== testing. 
+
+% Clue 5: the friend whose favorite language is Java works in the design department.
+% Find that friend by language, then check the department.
+clue(5, S) :-
+    memberchk(p(_, Dept, java, _), S),
+    Dept == design.           
