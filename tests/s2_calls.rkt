@@ -1,3 +1,3 @@
-note:context msg and skill prompts for both S1 AND S2 are in S1.md,therefore im continuing S2 in same chat as S1(not a prompt)
+(print-insert-result)
 
-s1 is fully finished and pushed .not gotta start S2 asap, starting with my-length only
+

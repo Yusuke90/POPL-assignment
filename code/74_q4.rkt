@@ -36,4 +36,14 @@
 
 ;; (insert-if-short x lst n) = insert x into every list shorter than n
 (define (insert-if-short x lst n)
-  ((make-inserter x (lambda (len) (< len n))) lst))              
+  ((make-inserter x (lambda (len) (< len n))) lst))
+
+;; (print-insert-result) = read x, then lst, then n from standard input,
+;;   display (insert-if-short x lst n), then a newline
+(define (print-insert-result)
+  (let* ((x (read))
+         (lst (read))
+         (n (read)))
+    (display (insert-if-short x lst n))
+    (newline)))
+                
