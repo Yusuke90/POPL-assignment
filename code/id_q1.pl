@@ -55,4 +55,13 @@ clue(4, S) :-
 % Find that friend by language, then check the department.
 clue(5, S) :-
     memberchk(p(_, Dept, java, _), S),
-    Dept == design.           
+    Dept == design. 
+
+% Clue 6: Carla's project preference is not embedded, and her department
+% is not development. Find Carla by name, then check project and department.
+clue(6, S) :-
+    memberchk(p('Carla', Dept, _, Project), S),
+    Project \== embedded,
+    Dept \== development.
+    
+                  
