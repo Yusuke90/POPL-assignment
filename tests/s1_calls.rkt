@@ -7,3 +7,7 @@
 (print-inorder t2)
 (print-inorder t3)
 (print-inorder '())
+(display (preorder-acc t1 '())) (newline)
+(display (preorder-acc t2 '())) (newline)
+(display (preorder-acc t3 '())) (newline)
+(display (preorder-acc '() '())) (newline)

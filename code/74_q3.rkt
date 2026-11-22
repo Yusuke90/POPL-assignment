@@ -13,4 +13,13 @@
 (define (print-inorder tree)
   (begin
     (display (inorder-acc tree '()))
-    (newline)))                         
+    (newline)))    
+;; (preorder-acc tree acc) = acc if tree is empty, else
+;;   the value, then the preorder of the left subtree,
+;;   then (the preorder of the right subtree, then acc)
+(define (preorder-acc tree acc)
+  (if (null? tree)
+      acc
+      (cons (car tree)
+            (preorder-acc (cadr tree)
+                          (preorder-acc (caddr tree) acc)))))                         
