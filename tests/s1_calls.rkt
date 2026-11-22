@@ -11,3 +11,7 @@
 (display (preorder-acc t2 '())) (newline)
 (display (preorder-acc t3 '())) (newline)
 (display (preorder-acc '() '())) (newline)
+(display (postorder-acc t1 '())) (newline)
+(display (postorder-acc t2 '())) (newline)
+(display (postorder-acc t3 '())) (newline)
+(display (postorder-acc '() '())) (newline)

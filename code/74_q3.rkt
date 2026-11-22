@@ -22,4 +22,13 @@
       acc
       (cons (car tree)
             (preorder-acc (cadr tree)
-                          (preorder-acc (caddr tree) acc)))))                         
+                          (preorder-acc (caddr tree) acc)))))     
+;; (postorder-acc tree acc) = acc if tree is empty, else
+;;   the postorder of the left subtree, then the postorder of the
+;;   right subtree, then the value, then acc
+(define (postorder-acc tree acc)
+  (if (null? tree)
+      acc
+      (postorder-acc (cadr tree)
+                     (postorder-acc (caddr tree)
+                                    (cons (car tree) acc)))))                                              
