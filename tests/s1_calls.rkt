@@ -12,3 +12,7 @@
 (print-all-traversals t2)
 (print-all-traversals t3)
 (print-all-traversals '())
+(display (tree-height t1)) (newline)
+(display (tree-height t2)) (newline)
+(display (tree-height t3)) (newline)
+(display (tree-height '())) (newline)

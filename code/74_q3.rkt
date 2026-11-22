@@ -41,3 +41,14 @@
     (newline)
     (display (postorder-acc tree '()))
     (newline)))                                                                              
+;; (my-max a b) = a if a > b, else b
+(define (my-max a b)
+  (if (> a b) a b))
+
+;; (tree-height tree) = 0 if tree is empty, else
+;;   1 + the larger of the heights of its left and right subtrees
+(define (tree-height tree)
+  (if (null? tree)
+      0
+      (+ 1 (my-max (tree-height (cadr tree))
+                   (tree-height (caddr tree))))))    
