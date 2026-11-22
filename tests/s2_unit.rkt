@@ -36,3 +36,7 @@
 (display (count-z (insert-if-short 'z (nest 100 '()) 2))) (newline)
 (display (my-length (insert-if-short 'z (build 10000 '()) 10001))) (newline)
 (display (my-length (insert-if-short 'z (build 10000 '()) 10000))) (newline)
+(display ((make-inserter 'z (lambda (len) (= len 2))) '((a b) (c) (d e (f g))))) (newline)
+(display ((make-inserter 0 (lambda (len) (>= len 0))) '(1 (2)))) (newline)
+(display ((make-inserter 'e (lambda (len) (= len 0))) '(1 () (2 ())))) (newline)
+(display ((make-inserter 'z (lambda (len) (< len 0))) '(1 ()))) (newline)

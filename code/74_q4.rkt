@@ -15,16 +15,25 @@
       '()
       (cons (f (car lst))
             (my-map f (cdr lst))))) 
-;; (insert-if-short x lst n) = lst with every nested list processed first,
-;;   then x consed on the front if the ORIGINAL length of lst is < n
+;; (make-inserter x len-ok?) = a one-argument function that takes a list and
+;;   conses x onto every list (at every level) whose ORIGINAL length
+;;   satisfies len-ok?, processing nested lists first
+(define (make-inserter x len-ok?)
+  (letrec ((insert
+            ;; (insert lst) = process the elements of lst, then cons x on the
+            ;;   front if (len-ok? (my-length lst)) holds
+            (lambda (lst)
+              (let ((processed
+                     (my-map (lambda (e)
+                               (if (or (pair? e) (null? e))
+                                   (insert e)
+                                   e))
+                             lst)))
+                (if (len-ok? (my-length lst))
+                    (cons x processed)
+                    processed)))))
+    insert))
+
+;; (insert-if-short x lst n) = insert x into every list shorter than n
 (define (insert-if-short x lst n)
-  (let ((processed
-         ;; each element: a list (or ()) is processed recursively, an atom stays
-         (my-map (lambda (e)
-                   (if (or (pair? e) (null? e))
-                       (insert-if-short x e n)
-                       e))
-                 lst)))
-    (if (< (my-length lst) n)
-        (cons x processed)
-        processed)))                   
+  ((make-inserter x (lambda (len) (< len n))) lst))              
