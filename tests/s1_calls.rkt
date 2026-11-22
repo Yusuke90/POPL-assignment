@@ -16,3 +16,7 @@
 (display (tree-height t2)) (newline)
 (display (tree-height t3)) (newline)
 (display (tree-height '())) (newline)
+(display (leaf-count t1)) (newline)
+(display (leaf-count t2)) (newline)
+(display (leaf-count t3)) (newline)
+(display (leaf-count '())) (newline)

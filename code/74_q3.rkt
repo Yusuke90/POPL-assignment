@@ -52,3 +52,10 @@
       0
       (+ 1 (my-max (tree-height (cadr tree))
                    (tree-height (caddr tree))))))    
+;; (leaf-count tree) = 0 if tree is empty, 1 if both subtrees are empty,
+;;   else (leaf-count left) + (leaf-count right)
+(define (leaf-count tree)
+  (cond ((null? tree) 0)
+        ((and (null? (cadr tree)) (null? (caddr tree))) 1)
+        (else (+ (leaf-count (cadr tree))
+                 (leaf-count (caddr tree))))))                   
