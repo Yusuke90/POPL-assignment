@@ -15,9 +15,7 @@
       '()
       (cons (f (car lst))
             (my-map f (cdr lst))))) 
-;; (make-inserter x len-ok?) = a one-argument function that takes a list and
-;;   conses x onto every list (at every level) whose ORIGINAL length
-;;   satisfies len-ok?, processing nested lists first
+;; (make-inserter x len-ok?) =  a function that conses x onto every list, at every level, whose original length passes len-ok?
 (define (make-inserter x len-ok?)
   (letrec ((insert
             ;; (insert lst) = process the elements of lst, then cons x on the
