@@ -1,10 +1,10 @@
-% tests/p1_tests.pl: tests for P1 (code/id_q1.pl).
+% tests/p1_tests.pl: tests for P1 (code/74_q1.pl).
 % Run from the repo root. Replace id in the consult line below with your group ID:
 %   swipl -q -f tests/p1_tests.pl -g run_tests -t halt
 % Prints one PASS/FAIL line per test and a summary. The run fails (non-zero
 % exit) if any test fails.
 
-:- consult('../code/id_q1.pl').
+:- consult('../code/74_q1.pl').
 
 % test/2, holds/2 and fails/2 clauses are spread over the file on purpose.
 :- discontiguous test/2, holds/2, fails/2.
@@ -46,8 +46,8 @@ test(main_four_lines,
        length(Parts, 5),
        last(Parts, "") )).
 
-% Loading code/id_q1.pl printed nothing is checked by hand:
-%   swipl -q -f code/id_q1.pl -g true -t halt   (expect no output)
+% Loading code/74_q1.pl printed nothing is checked by hand:
+%   swipl -q -f code/74_q1.pl -g true -t halt   (expect no output)
 
 % ---------- solution/1 ----------
 
