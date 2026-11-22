@@ -69,4 +69,11 @@ clue(6, S) :-
 clue(7, S) :-
     memberchk(p('Dana', Dept, Lang, _), S),
     Lang \== java,
-    memberchk(Dept, [research, testing]).                  
+    memberchk(Dept, [research, testing]). 
+
+% Clue 8: the friend who prefers data projects works in research and does not
+% use JavaScript. Find that friend by project, then check dept and language.
+clue(8, S) :-
+    memberchk(p(_, Dept, Lang, data), S),
+    Dept == research,
+    Lang \== javascript.                     
