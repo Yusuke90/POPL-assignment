@@ -73,3 +73,7 @@ equation(List, String) :-
     string_concat(LeftString, Equals, FirstPart),
     string_concat(FirstPart, RightString, String).    
 
+% generate_equation(List, String): String is the first valid equation for List, if one exists.
+generate_equation(List, String) :-
+    once(equation(List, String)).
+
